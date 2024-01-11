@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: akeyless-ci-base
+  namespace: aketyless
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: akeyless-ci-base
+  template:
+    metadata:
+      labels:
+        app: akeyless-ci-base
+    spec:
+      serviceAccountName: gw-sandbox
+      containers:
+      - name: akeyless-ci-base
+        image: akeyless/ci_base:latest-alpine
+        command: ["sleep","infinity"]
